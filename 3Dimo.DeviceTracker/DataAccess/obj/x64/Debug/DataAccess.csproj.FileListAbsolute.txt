@@ -1,0 +1,6 @@
+D:\Code\CloudberrySoftwareSolutions\3dimo\Tracking\3Dimo.DeviceTracker\DataAccess\bin\x64\Debug\DataAccess.dll.config
+D:\Code\CloudberrySoftwareSolutions\3dimo\Tracking\3Dimo.DeviceTracker\DataAccess\bin\x64\Debug\DataAccess.dll
+D:\Code\CloudberrySoftwareSolutions\3dimo\Tracking\3Dimo.DeviceTracker\DataAccess\bin\x64\Debug\DataAccess.pdb
+D:\Code\CloudberrySoftwareSolutions\3dimo\Tracking\3Dimo.DeviceTracker\DataAccess\obj\x64\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\Code\CloudberrySoftwareSolutions\3dimo\Tracking\3Dimo.DeviceTracker\DataAccess\obj\x64\Debug\DataAccess.dll
+D:\Code\CloudberrySoftwareSolutions\3dimo\Tracking\3Dimo.DeviceTracker\DataAccess\obj\x64\Debug\DataAccess.pdb
