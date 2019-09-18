@@ -1,4 +1,5 @@
-﻿using Logging;
+﻿using DataAccess;
+using Logging;
 using Logging.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,24 @@ namespace DeviceTracker
         private static int scanRetries = 10;
         private static ILogger logger;
         private static Timer timer;
+        private static TrackingDetailSaver trackingDetailSaver;
+        private static Guid sessionId;
         static void Main(string[] args)
         {
             try
             {
                 logger = new FileLogger();
+                trackingDetailSaver = new TrackingDetailSaver();
+
                 if (!scanMeasuringDevices())
                 {
                     logger.Log("Could not detect any contected dongle or station.");
                     return;
                 }
+
+                sessionId = Guid.NewGuid();
+                var userId = Guid.NewGuid();
+                trackingDetailSaver.SaveSession(sessionId, DateTime.Now, userId, Environment.MachineName);
 
                 setupTrackers();
                 Thread.Sleep(10000);
@@ -51,12 +60,19 @@ namespace DeviceTracker
 
         private static void dispose()
         {
-            if (_measuringDevice.isRecording())
-                _measuringDevice.stopRecording();
-            _measuringDevice.gotoConfig();
-            _measuringDevice.disableRadio();
-            _measuringDevice.clearCallbackHandlers();
-            timer.Dispose();
+            if (timer != null)
+            {
+                timer.Dispose();
+            }
+
+            if (_measuringDevice != null)
+            {
+                if (_measuringDevice.isRecording())
+                    _measuringDevice.stopRecording();
+                _measuringDevice.gotoConfig();
+                _measuringDevice.disableRadio();
+                _measuringDevice.clearCallbackHandlers();
+            }
         }
 
         private static void TimerCallback(Object o)
@@ -96,7 +112,7 @@ namespace DeviceTracker
                 text += $"{data.Key:X8} Sample Time Fine: {data.Value._sampleTimeFine} \n";
             }
 
-            File.AppendAllText($@"C:\3dimo.devicetracker.logs\data_{DateTime.Now.ToString("yyyyMMdd")}.txt", text);
+            //File.AppendAllText($@"C:\3dimo.devicetracker.logs\data_{DateTime.Now.ToString("yyyyMMdd")}.txt", text);
             
             GC.Collect();
         }
@@ -199,6 +215,15 @@ namespace DeviceTracker
             _connectedMtwData[e.Device.deviceId().toInt()]._timeOfArrival_msTime = e.Packet.timeOfArrival().msTime();
             _connectedMtwData[e.Device.deviceId().toInt()]._containsSampleTimeFine = e.Packet.containsSampleTimeFine();
             _connectedMtwData[e.Device.deviceId().toInt()]._sampleTimeFine = e.Packet.sampleTimeFine();
+
+            trackingDetailSaver.SaveTrackingDetail(e.Device.deviceId().toInt(),
+                                                   sessionId,
+                                                   DateTime.Now,
+                                                   e.Packet.timeOfArrival().msTime(),
+                                                   e.Device.batteryLevel(),
+                                                   e.Device.lastKnownRssi(),
+                                                   e.Packet.freeAcceleration().cartesianLength(),
+                                                   e.Packet.calibratedAcceleration().cartesianLength());
         }
 
 
