@@ -21,24 +21,47 @@ namespace DeviceTracker
         private static Timer timer;
         static void Main(string[] args)
         {
-            logger = new FileLogger();
-            if (!scanMeasuringDevices())
+            try
             {
-                logger.Log("Could not detect any contected dongle or station.");
-                return;
+                logger = new FileLogger();
+                if (!scanMeasuringDevices())
+                {
+                    logger.Log("Could not detect any contected dongle or station.");
+                    return;
+                }
+
+                setupTrackers();
+                Thread.Sleep(10000);
+                measure();
+
+                timer = new Timer(TimerCallback, null, 0, 20);
+
+                Console.ReadLine();
+            }
+            catch(Exception ex)
+            {
+                logger.Log($"{ex.Message} \n {ex.StackTrace}");
+            }
+            finally
+            {
+                dispose();
             }
 
-            setupTrackers();
-            measure();
+        }
 
-            timer = new Timer(TimerCallback, null, 0, 20);
-            
-            Console.ReadLine();
+        private static void dispose()
+        {
+            if (_measuringDevice.isRecording())
+                _measuringDevice.stopRecording();
+            _measuringDevice.gotoConfig();
+            _measuringDevice.disableRadio();
+            _measuringDevice.clearCallbackHandlers();
+            timer.Dispose();
         }
 
         private static void TimerCallback(Object o)
         {
-            string text = "";
+            string text = $"{DateTime.Now}";
             foreach (KeyValuePair<uint, ConnectedMtData> data in _connectedMtwData)
             {
                 if (data.Value._containsUtcTime)
@@ -58,7 +81,7 @@ namespace DeviceTracker
                 if (data.Value._containsFreeAcceleration)
                 {
                     text += $"{data.Key:X8} Free Acceleration Cartesian Length (m/s2): {data.Value._freeAcceleration.cartesianLength()} \n";
-                    text += $"{data.Key:X8} Free Acceleration Data (m/s2): {data.Value._freeAcceleration.data()} \n";
+                    text += $"{data.Key:X8} Free Acceleration Data (m/s2): {data.Value._freeAcceleration.data().ToString()} \n";
                 }
 
                 if (data.Value._containsCalibratedAcceleration)
@@ -66,6 +89,11 @@ namespace DeviceTracker
                     text += $"{data.Key:X8} Calibrated Acceleration Cartesian Length (m/s2): {data.Value._calibratedAcceleration.cartesianLength()} \n";
                     //text += $"{3:X8} Calibrated Acceleration Value (m/s2): {data.Value._calibratedAcceleration.value(data.Key)}";
                 }
+
+                text += $"{data.Key:X8} Time of Arrival: { new DateTime(data.Value._timeOfArrival_msTime)} \n";
+
+                text += $"{data.Key:X8} Contains Sample Time Fine: {data.Value._containsSampleTimeFine} \n";
+                text += $"{data.Key:X8} Sample Time Fine: {data.Value._sampleTimeFine} \n";
             }
 
             File.AppendAllText($@"C:\3dimo.devicetracker.logs\data_{DateTime.Now.ToString("yyyyMMdd")}.txt", text);
@@ -95,9 +123,9 @@ namespace DeviceTracker
 
                     trackingDevice.addCallbackHandler(callback);
                     _measuringMts.Add(trackingDevice, callback);
-                    logger.Log($"Completed setting up tracker {trackingDevice.deviceId().ToString()} for measuring.");
+                    logger.Log($"Completed setting up tracker {trackingDevice.deviceId().toInt().ToString()} for measuring.");
                 }
-                logger.Log($"Completed setting up device {detectedDevices.deviceId().ToString()} for measuring.");
+                logger.Log($"Completed setting up device {detectedDevices.deviceId().toInt().ToString()} for measuring.");
             }
         }
 
@@ -107,7 +135,7 @@ namespace DeviceTracker
             {
                 if (!detectedDevice.deviceId().isWirelessMaster())
                 {
-                    logger.Log($"Not wireless Master ... exiting for device {detectedDevice.deviceId().ToString()}");
+                    logger.Log($"Not wireless Master ... exiting for device {detectedDevice.deviceId().toInt().ToString()}");
                     break;
                 }
 
@@ -118,7 +146,7 @@ namespace DeviceTracker
                 
                 //TODO: Find out what the channel number represents and means
                 _xda.getDevice(detectedDevice.deviceId()).enableRadio(11);
-                logger.Log($"Radio enabled for device {detectedDevice.deviceId().ToString()}");
+                logger.Log($"Radio enabled for device {detectedDevice.deviceId().toInt().ToString()}");
             }
         }
 
@@ -132,7 +160,7 @@ namespace DeviceTracker
                 if (_xda._DetectedDevices.Any())
                 {
                     logger.Log($"{_xda._DetectedDevices.Count()} Devics Detected after {retries} retries.");
-                    logger.Log($"IDs: { string.Join(", ", _xda._DetectedDevices.Select(d => d.deviceId().ToString())) }");
+                    logger.Log($"IDs: { string.Join(", ", _xda._DetectedDevices.Select(d => d.deviceId().toInt().ToString())) }");
                     return true;
                 }
 
@@ -168,7 +196,9 @@ namespace DeviceTracker
             _connectedMtwData[e.Device.deviceId().toInt()]._containsCalibratedAcceleration = e.Packet.containsCalibratedAcceleration();
             _connectedMtwData[e.Device.deviceId().toInt()]._containsFreeAcceleration = e.Packet.containsFreeAcceleration();
             _connectedMtwData[e.Device.deviceId().toInt()]._containsUtcTime = e.Packet.containsUtcTime();
-
+            _connectedMtwData[e.Device.deviceId().toInt()]._timeOfArrival_msTime = e.Packet.timeOfArrival().msTime();
+            _connectedMtwData[e.Device.deviceId().toInt()]._containsSampleTimeFine = e.Packet.containsSampleTimeFine();
+            _connectedMtwData[e.Device.deviceId().toInt()]._sampleTimeFine = e.Packet.sampleTimeFine();
         }
 
 
