@@ -35,7 +35,7 @@ namespace DataAccess
         public bool SaveTrackingDetail(
             uint trackerId, 
             Guid sessionId,
-            DateTime timeOfArrival,
+           string timeOfArrival,
             double timeOfArrivalTicks,
             double batteryLevel,
             double signalStrength,

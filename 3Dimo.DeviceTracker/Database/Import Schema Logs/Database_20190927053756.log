@@ -1,0 +1,85 @@
+9/27/2019 7:37:56 PM	This log contains information about the import schema operation into project 'Database' on computer 'DESKTOP-80R8B88' by user 'makar'.
+9/27/2019 7:37:56 PM	Import of database schema has started.
+9/27/2019 7:38:01 PM	Gathering database credentials
+9/27/2019 7:38:01 PM	Gathering database options
+9/27/2019 7:38:01 PM	Gathering generic database scoped configuration option
+9/27/2019 7:38:01 PM	Gathering users
+9/27/2019 7:38:01 PM	Gathering roles
+9/27/2019 7:38:01 PM	Gathering application roles
+9/27/2019 7:38:01 PM	Gathering role memberships
+9/27/2019 7:38:01 PM	Gathering filegroups
+9/27/2019 7:38:01 PM	Gathering full-text catalogs
+9/27/2019 7:38:01 PM	Gathering assemblies
+9/27/2019 7:38:01 PM	Gathering certificates
+9/27/2019 7:38:01 PM	Gathering asymmetric keys
+9/27/2019 7:38:01 PM	Gathering symmetric keys
+9/27/2019 7:38:01 PM	Gathering encrypted symmetric keys
+9/27/2019 7:38:01 PM	Gathering schemas
+9/27/2019 7:38:01 PM	Gathering XML schema collections
+9/27/2019 7:38:01 PM	Gathering user-defined data types
+9/27/2019 7:38:01 PM	Gathering user-defined types
+9/27/2019 7:38:01 PM	Gathering table types
+9/27/2019 7:38:01 PM	Gathering unique keys for table types
+9/27/2019 7:38:01 PM	Gathering primary keys for table types
+9/27/2019 7:38:01 PM	Gathering indexes for table types
+9/27/2019 7:38:01 PM	Gathering check constraints for table types
+9/27/2019 7:38:01 PM	Gathering default constraints for table types
+9/27/2019 7:38:01 PM	Gathering partition functions
+9/27/2019 7:38:01 PM	Gathering partition schemes
+9/27/2019 7:38:01 PM	Gathering functions
+9/27/2019 7:38:01 PM	Gathering encrypted functions
+9/27/2019 7:38:01 PM	Gathering aggregates
+9/27/2019 7:38:01 PM	Gathering procedures
+9/27/2019 7:38:01 PM	Gathering encrypted procedures
+9/27/2019 7:38:01 PM	Gathering tables
+9/27/2019 7:38:01 PM	Gathering primary keys
+9/27/2019 7:38:01 PM	Gathering unique constraints
+9/27/2019 7:38:01 PM	Gathering foreign keys
+9/27/2019 7:38:01 PM	Gathering default constraints
+9/27/2019 7:38:01 PM	Gathering check constraints
+9/27/2019 7:38:01 PM	Gathering views
+9/27/2019 7:38:01 PM	Gathering encrypted views
+9/27/2019 7:38:01 PM	Gathering indexes
+9/27/2019 7:38:01 PM	Gathering statistics
+9/27/2019 7:38:01 PM	Gathering full-text index stoplists
+9/27/2019 7:38:01 PM	Gathering search property lists
+9/27/2019 7:38:01 PM	Gathering search properties
+9/27/2019 7:38:01 PM	Gathering full-text indexes
+9/27/2019 7:38:01 PM	Gathering column store indexes
+9/27/2019 7:38:01 PM	Gathering spatial indexes
+9/27/2019 7:38:01 PM	Gathering XML indexes
+9/27/2019 7:38:01 PM	Gathering Selective XML indexes
+9/27/2019 7:38:01 PM	Gathering encrypted triggers
+9/27/2019 7:38:01 PM	Gathering triggers
+9/27/2019 7:38:02 PM	Gathering encrypted and clr ddl triggers
+9/27/2019 7:38:02 PM	Gathering ddl triggers
+9/27/2019 7:38:02 PM	Gathering synonyms
+9/27/2019 7:38:02 PM	Gathering defaults
+9/27/2019 7:38:02 PM	Gathering data constraint uddt bindings
+9/27/2019 7:38:02 PM	Gathering rules
+9/27/2019 7:38:02 PM	Gathering data constraint uddt bindings
+9/27/2019 7:38:02 PM	Gathering message types
+9/27/2019 7:38:02 PM	Gathering queues
+9/27/2019 7:38:02 PM	Gathering contracts
+9/27/2019 7:38:02 PM	Gathering services
+9/27/2019 7:38:02 PM	Gathering event notifications
+9/27/2019 7:38:02 PM	Gathering remote service bindings
+9/27/2019 7:38:02 PM	Gathering broker priorities
+9/27/2019 7:38:02 PM	Gathering signatures
+9/27/2019 7:38:02 PM	Gathering data compression options
+9/27/2019 7:38:02 PM	Gathering sequence types
+9/27/2019 7:38:02 PM	Gathering security policies
+9/27/2019 7:38:02 PM	Gather column encryption keys
+9/27/2019 7:38:02 PM	Gathering column master keys
+9/27/2019 7:38:02 PM	Gathering external data sources
+9/27/2019 7:38:02 PM	Gathering external file formats
+9/27/2019 7:38:02 PM	Gathering external tables
+9/27/2019 7:38:02 PM	Gathering extended properties
+9/27/2019 7:38:02 PM	Gathering credentials
+9/27/2019 7:38:02 PM	Gathering logins
+9/27/2019 7:38:02 PM	Gathering server audits
+9/27/2019 7:38:02 PM	Scanning project for duplicate elements
+9/27/2019 7:38:02 PM	Finished duplicate element processing
+9/27/2019 7:38:03 PM	Finished importing database.
+9/27/2019 7:38:03 PM	A summary of the import was saved to the following location: D:\Code\CloudberrySoftwareSolutions\3dimo\3DIMOTracking\3Dimo.DeviceTracker\Database\Import Schema Logs\Database_20190927053756.log
+9/27/2019 7:38:03 PM	Click Finish to continue...

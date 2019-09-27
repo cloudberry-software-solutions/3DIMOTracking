@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{7AB117E2-6DE9-4EA6-9EB3-ED0EC460F2F6}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{7AB117E2-6DE9-4EA6-9EB3-ED0EC460F2F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AB117E2-6DE9-4EA6-9EB3-ED0EC460F2F6}.Release|x64.ActiveCfg = Release|x64
 		{7AB117E2-6DE9-4EA6-9EB3-ED0EC460F2F6}.Release|x64.Build.0 = Release|x64
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Debug|x64.Build.0 = Debug|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Release|x64.ActiveCfg = Release|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Release|x64.Build.0 = Release|Any CPU
+		{84D2FB5B-2F38-4DB3-9DE3-16776A9FD224}.Release|x64.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
