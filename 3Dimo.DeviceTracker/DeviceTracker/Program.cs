@@ -3,6 +3,7 @@ using Logging;
 using Logging.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -218,7 +219,8 @@ namespace DeviceTracker
 
             trackingDetailSaver.SaveTrackingDetail(e.Device.deviceId().toInt(),
                                                    sessionId,
-                                                   DateTime.Now,
+                                                   DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture),
+                                                   //DateTime.Now,
                                                    e.Packet.timeOfArrival().msTime(),
                                                    e.Device.batteryLevel(),
                                                    e.Device.lastKnownRssi(),
