@@ -59,7 +59,7 @@ FROM
 			  --,[CalibratedAccelerationCartesianLength]
 			  ,ABS(DateDiff(MILLISECOND,[TimeOfArrival], CASE WHEN LAG([TimeOfArrival],1,0) OVER(PARTITION BY td.Sessionid ORDER BY [TimeOfArrival]) = '1900-01-01 00:00:00.000' THEN [TimeOfArrival] ELSE LAG([TimeOfArrival],1,0) OVER(PARTITION BY td.Sessionid ORDER BY [TimeOfArrival]) END)) / 1000.00 as INSTANTANEOUS_CHANGE_IN_TIME
 			  ,ABS([FreeAccelerationCartesianLength] - LAG([FreeAccelerationCartesianLength],1,0) OVER(PARTITION BY td.Sessionid ORDER BY [TimeOfArrival])) as ABS_CHANGE_IN_ACCELERATION
-		  FROM [3Dimo].[dbo].[TrackingDetail] td
-		  INNER JOIN dbo.session s on s.id = td.Sessionid
+		  FROM [$(DatabaseName)].[dbo].[TrackingDetail] td
+		  INNER JOIN [$(DatabaseName)].[dbo].[session] s on s.id = td.Sessionid
 	)a
 ) F
