@@ -68,5 +68,6 @@
     <Build Include="dbo\Views\ACCELEROMETER.sql" />
     <Build Include="Security\ThreeDimo.sql" />
     <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Views\AccelerometerTesting.sql" />
   </ItemGroup>
 </Project>

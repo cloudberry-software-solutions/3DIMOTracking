@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
 import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
 
-import { OrdersChart } from '../../../../@core/data/orders-chart';
+import { ChartData } from '../../../../@core/interfaces/common/chart';
 import { LayoutService } from '../../../../@core/utils/layout.service';
 
 @Component({
@@ -19,7 +25,7 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
 export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   @Input()
-  ordersChartData: OrdersChart;
+  ordersChartData: ChartData;
 
   private alive = true;
 
@@ -30,6 +36,12 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     if (this.option) {
       this.updateOrdersChartOptions(this.ordersChartData);
     }
+  }
+
+  prepAxisXLabels(labels: any[]): any[] {
+    return labels.map((label, i) => {
+      return i === 0 || i === labels.length - 1 ? '' : label;
+    });
   }
 
   constructor(private theme: NbThemeService,
@@ -130,14 +142,14 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
         },
       },
       series: [
-        this.getFirstLine(eTheme),
-        this.getSecondLine(eTheme),
-        this.getThirdLine(eTheme),
+        this.getLinePayment(eTheme),
+        this.getLineCancelled(eTheme),
+        this.getLineAll(eTheme),
       ],
     };
   }
 
-  getFirstLine(eTheme) {
+  getLineAll(eTheme) {
     return {
       type: 'line',
       smooth: true,
@@ -171,7 +183,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  getSecondLine(eTheme) {
+  getLinePayment(eTheme) {
     return         {
       type: 'line',
       smooth: true,
@@ -215,7 +227,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  getThirdLine(eTheme) {
+  getLineCancelled(eTheme) {
     return {
       type: 'line',
       smooth: true,
@@ -259,10 +271,10 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  updateOrdersChartOptions(ordersChartData: OrdersChart) {
+  updateOrdersChartOptions(ordersChartData: ChartData) {
     const options = this.option;
     const series = this.getNewSeries(options.series, ordersChartData.linesData);
-    const xAxis = this.getNewXAxis(options.xAxis, ordersChartData.chartLabel);
+    const xAxis = this.getNewXAxis(options.xAxis, this.prepAxisXLabels(ordersChartData.axisXLabels));
 
     this.option = {
       ...options,
@@ -280,10 +292,10 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     });
   }
 
-  getNewXAxis(xAxis, chartLabel: string[]) {
+  getNewXAxis(xAxis, axisXLabels: string[]) {
     return {
       ...xAxis,
-      data: chartLabel,
+      data: axisXLabels,
     };
   }
 
@@ -293,11 +305,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
 
   resizeChart() {
     if (this.echartsIntance) {
-      // Fix recalculation chart size
-      // TODO: investigate more deeply
-      setTimeout(() => {
-        this.echartsIntance.resize();
-      }, 0);
+      this.echartsIntance.resize();
     }
   }
 

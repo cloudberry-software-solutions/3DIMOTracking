@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
 import { delay, takeWhile } from 'rxjs/operators';
-import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnChanges } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils';
-import { ElectricityChart } from '../../../../@core/data/electricity';
+import { ElectricityChart } from '../../../../@core/interfaces/iot/electricity';
 
 @Component({
   selector: 'ngx-electricity-chart',
@@ -15,11 +21,11 @@ import { ElectricityChart } from '../../../../@core/data/electricity';
     </div>
   `,
 })
-export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
+export class ElectricityChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   private alive = true;
 
-  @Input() data: ElectricityChart[];
+  @Input() data: ElectricityChart;
 
   option: any;
   echartsIntance: any;
@@ -31,6 +37,12 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
         takeWhile(() => this.alive),
       )
       .subscribe(() => this.resizeChart());
+  }
+
+  prepAxisXLabels(labels: any[]): any[] {
+    return labels.map((label, i) => {
+      return i === 0 || i === labels.length - 1 ? '' : label;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -74,7 +86,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
             type: 'category',
             boundaryGap: false,
             offset: 25,
-            data: this.data.map(i => i.label),
+            data: this.prepAxisXLabels(this.data.chart.axisXLabels),
             axisTick: {
               show: false,
             },
@@ -151,7 +163,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
                   }]),
                 },
               },
-              data: this.data.map(i => i.value),
+              data: this.data.chart.linesData[0],
             },
 
             {
@@ -174,7 +186,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
                   opacity: 1,
                 },
               },
-              data: this.data.map(i => i.value),
+              data: this.data.chart.linesData[0],
             },
           ],
         };
@@ -186,9 +198,39 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
   }
 
   resizeChart() {
-    if (this.echartsIntance) {
-      this.echartsIntance.resize();
-    }
+    this.echartsIntance && this.echartsIntance.resize();
+  }
+
+  ngOnChanges(): void {
+    this.option && this.updateOrdersChartOptions(this.data);
+  }
+
+  updateOrdersChartOptions(data: ElectricityChart) {
+    const options = this.option;
+    const series = this.getNewSeries(options.series, data.chart.linesData);
+    const xAxis = this.getNewXAxis(options.xAxis, this.prepAxisXLabels(data.chart.axisXLabels));
+
+    this.option = {
+      ...options,
+      xAxis,
+      series,
+    };
+  }
+
+  getNewSeries(series, linesData: number[][]) {
+    return series.map((line, index) => {
+      return {
+        ...line,
+        data: linesData[index],
+      };
+    });
+  }
+
+  getNewXAxis(xAxis, axisXLabels: string[]) {
+    return {
+      ...xAxis,
+      data: axisXLabels,
+    };
   }
 
   ngOnDestroy() {
