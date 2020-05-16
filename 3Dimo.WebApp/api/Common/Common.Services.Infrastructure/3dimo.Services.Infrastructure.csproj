@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common.DTO\Common.DTO.csproj" ReferenceOutputAssembly="true" />
-    <ProjectReference Include="..\Common.Entities\Common.Entities.csproj" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\Common.DTO\3dimo.DTO.csproj" />
+    <ProjectReference Include="..\Common.Entities\3dimo.Entities.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />

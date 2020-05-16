@@ -10,10 +10,10 @@
     <Folder Include="Setup\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.DIContainerCore\Common.DIContainerCore.csproj" />
-    <ProjectReference Include="..\Common.DTO\Common.DTO.csproj" />
-    <ProjectReference Include="..\Common.IdentityManagementCore\Common.IdentityManagementCore.csproj" />
-    <ProjectReference Include="..\Common.Services.Infrastructure\Common.Services.Infrastructure.csproj" />
+    <ProjectReference Include="..\Common.DIContainerCore\3dimo.DIContainerCore.csproj" />
+    <ProjectReference Include="..\Common.DTO\3dimo.DTO.csproj" />
+    <ProjectReference Include="..\Common.IdentityManagementCore\3dimo.IdentityManagementCore.csproj" />
+    <ProjectReference Include="..\Common.Services.Infrastructure\3dimo.Services.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.7" />

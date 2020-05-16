@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common.Entities\Common.Entities.csproj" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\Common.Entities\3dimo.Entities.csproj" />
   </ItemGroup>
 
 </Project>

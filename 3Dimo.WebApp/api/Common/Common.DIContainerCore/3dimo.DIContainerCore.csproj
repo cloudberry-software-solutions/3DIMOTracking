@@ -9,9 +9,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.DataAccess.EFCore\Common.DataAccess.EFCore.csproj" />
-    <ProjectReference Include="..\Common.Services\Common.Services.csproj" />
-    <ProjectReference Include="..\Common.Services.Infrastructure\Common.Services.Infrastructure.csproj" />
-    <ProjectReference Include="..\Common.Entities\Common.Entities.csproj" />
+    <ProjectReference Include="..\Common.DataAccess.EFCore\3dimo.DataAccess.EFCore.csproj" />
+    <ProjectReference Include="..\Common.Entities\3dimo.Entities.csproj" />
+    <ProjectReference Include="..\Common.Services.Infrastructure\3dimo.Services.Infrastructure.csproj" />
+    <ProjectReference Include="..\Common.Services\3dimo.Services.csproj" />
   </ItemGroup>
 </Project>

@@ -1,26 +1,26 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.DataAccess.EFCore", "Common\Common.DataAccess.EFCore\Common.DataAccess.EFCore.csproj", "{78009FE8-42FA-4E92-AB1B-2292C8C4AA91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.DataAccess.EFCore", "Common\Common.DataAccess.EFCore\3dimo.DataAccess.EFCore.csproj", "{78009FE8-42FA-4E92-AB1B-2292C8C4AA91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Entities", "Common\Common.Entities\Common.Entities.csproj", "{2566610C-2555-4B50-9A61-FCB5AE61519D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.Entities", "Common\Common.Entities\3dimo.Entities.csproj", "{2566610C-2555-4B50-9A61-FCB5AE61519D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Services.Infrastructure", "Common\Common.Services.Infrastructure\Common.Services.Infrastructure.csproj", "{20CF03E8-E064-46FE-8ECE-AA30369E7787}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.Services.Infrastructure", "Common\Common.Services.Infrastructure\3dimo.Services.Infrastructure.csproj", "{20CF03E8-E064-46FE-8ECE-AA30369E7787}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.DTO", "Common\Common.DTO\Common.DTO.csproj", "{C2CE9594-0939-43BE-BBAF-AF7D9BA6A83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.DTO", "Common\Common.DTO\3dimo.DTO.csproj", "{C2CE9594-0939-43BE-BBAF-AF7D9BA6A83B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3EDF9BD9-0CAC-48A1-B586-EBE8CF127A0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Services", "Common\Common.Services\Common.Services.csproj", "{F2DA70C1-48F6-43DD-9500-19EC0EB94B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.Services", "Common\Common.Services\3dimo.Services.csproj", "{F2DA70C1-48F6-43DD-9500-19EC0EB94B5F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Utils", "Common\Common.Utils\Common.Utils.csproj", "{167418DC-0413-4DBA-B547-CF7E30433AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.Utils", "Common\Common.Utils\3dimo.Utils.csproj", "{167418DC-0413-4DBA-B547-CF7E30433AD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.IdentityManagementCore", "Common\Common.IdentityManagementCore\Common.IdentityManagementCore.csproj", "{89B72710-CDCD-4735-B0C1-7D8C451ADEC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.IdentityManagementCore", "Common\Common.IdentityManagementCore\3dimo.IdentityManagementCore.csproj", "{89B72710-CDCD-4735-B0C1-7D8C451ADEC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.DIContainerCore", "Common\Common.DIContainerCore\Common.DIContainerCore.csproj", "{FF49EFE4-23D2-4DD5-92A8-7D732B68F35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.DIContainerCore", "Common\Common.DIContainerCore\3dimo.DIContainerCore.csproj", "{FF49EFE4-23D2-4DD5-92A8-7D732B68F35C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.WebApiCore", "Common\Common.WebApiCore\Common.WebApiCore.csproj", "{ED586317-D4C3-4BFE-9659-723B879A92CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3dimo.WebApiCore", "Common\Common.WebApiCore\3dimo.WebApiCore.csproj", "{ED586317-D4C3-4BFE-9659-723B879A92CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
