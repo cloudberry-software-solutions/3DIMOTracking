@@ -68,7 +68,7 @@
     "pace-js": "1.0.2",
     "roboto-fontface": "0.8.0",
     "rxjs": "6.5.2",
-    "rxjs-compat": "6.3.0",
+    "rxjs-compat": "6.6.7",
     "socicon": "3.0.5",
     "tinymce": "4.9.10",
     "tslib": "^1.9.0",
